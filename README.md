@@ -313,7 +313,11 @@ jwt.expiration=3600000  # 1 hour in milliseconds
 | `jwt.secret` | Secret key for JWT signing (min 64 chars) | (required) | `JWT_SECRET` |
 | `jwt.expiration` | Token expiration time (ms) | 3600000 (1 hour) | `JWT_EXPIRATION` |
 
-**Note**: Environment variables should use uppercase with underscores. Spring Boot automatically maps them to properties (e.g., `DB_USERNAME` → `spring.datasource.username`).
+**Note**: Spring Boot automatically maps environment variables to properties:
+- Environment variables are converted to lowercase with underscores replaced by dots
+- Example: `DB_USERNAME` → `spring.datasource.username`
+- Use `SPRING_` prefix for explicit Spring properties: `SPRING_DATASOURCE_URL` → `spring.datasource.url`
+- Custom properties (like `jwt.*`) use their exact name in uppercase: `JWT_SECRET` → `jwt.secret`
 
 #### DDL Auto Options
 
