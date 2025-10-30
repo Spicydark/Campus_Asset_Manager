@@ -217,18 +217,18 @@ Set the following environment variables:
 
 ```bash
 # Unix/Linux/Mac
-export DB_USERNAME=your_mysql_username
-export DB_PASSWORD=your_mysql_password
+export SPRING_DATASOURCE_USERNAME=your_mysql_username
+export SPRING_DATASOURCE_PASSWORD=your_mysql_password
 export JWT_SECRET=your-super-secure-jwt-secret-key-minimum-64-characters-for-hs512
 
 # Windows (Command Prompt)
-set DB_USERNAME=your_mysql_username
-set DB_PASSWORD=your_mysql_password
+set SPRING_DATASOURCE_USERNAME=your_mysql_username
+set SPRING_DATASOURCE_PASSWORD=your_mysql_password
 set JWT_SECRET=your-super-secure-jwt-secret-key-minimum-64-characters-for-hs512
 
 # Windows (PowerShell)
-$env:DB_USERNAME="your_mysql_username"
-$env:DB_PASSWORD="your_mysql_password"
+$env:SPRING_DATASOURCE_USERNAME="your_mysql_username"
+$env:SPRING_DATASOURCE_PASSWORD="your_mysql_password"
 $env:JWT_SECRET="your-super-secure-jwt-secret-key-minimum-64-characters-for-hs512"
 ```
 
@@ -287,9 +287,9 @@ The main configuration file is `src/main/resources/application.properties`:
 spring.application.name=Campus_Asset_Manager
 
 # Database Configuration
-spring.datasource.url=${DATASOURCE_URL:jdbc:mysql://localhost:3306/campus_asset_db}
-spring.datasource.username=${DB_USERNAME:root}
-spring.datasource.password=${DB_PASSWORD}
+spring.datasource.url=${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/campus_asset_db}
+spring.datasource.username=${SPRING_DATASOURCE_USERNAME:root}
+spring.datasource.password=${SPRING_DATASOURCE_PASSWORD}
 
 # JPA/Hibernate Configuration
 spring.jpa.hibernate.ddl-auto=update
@@ -305,19 +305,19 @@ jwt.expiration=3600000  # 1 hour in milliseconds
 
 | Property | Description | Default Value | Environment Variable |
 |----------|-------------|---------------|---------------------|
-| `spring.datasource.url` | Database connection URL | jdbc:mysql://localhost:3306/campus_asset_db | `DATASOURCE_URL` or `SPRING_DATASOURCE_URL` |
-| `spring.datasource.username` | Database username | root | `DB_USERNAME` or `SPRING_DATASOURCE_USERNAME` |
-| `spring.datasource.password` | Database password | (required) | `DB_PASSWORD` or `SPRING_DATASOURCE_PASSWORD` |
-| `spring.jpa.hibernate.ddl-auto` | Schema generation strategy | update | N/A |
-| `spring.jpa.show-sql` | Log SQL statements | true | N/A |
+| `spring.datasource.url` | Database connection URL | jdbc:mysql://localhost:3306/campus_asset_db | `SPRING_DATASOURCE_URL` |
+| `spring.datasource.username` | Database username | root | `SPRING_DATASOURCE_USERNAME` |
+| `spring.datasource.password` | Database password | (required) | `SPRING_DATASOURCE_PASSWORD` |
+| `spring.jpa.hibernate.ddl-auto` | Schema generation strategy | update | `SPRING_JPA_HIBERNATE_DDL_AUTO` |
+| `spring.jpa.show-sql` | Log SQL statements | true | `SPRING_JPA_SHOW_SQL` |
 | `jwt.secret` | Secret key for JWT signing (min 64 chars) | (required) | `JWT_SECRET` |
 | `jwt.expiration` | Token expiration time (ms) | 3600000 (1 hour) | `JWT_EXPIRATION` |
 
-**Note**: Spring Boot automatically maps environment variables to properties:
-- Environment variables are converted to lowercase with underscores replaced by dots
-- Example: `DB_USERNAME` → `spring.datasource.username`
-- Use `SPRING_` prefix for explicit Spring properties: `SPRING_DATASOURCE_URL` → `spring.datasource.url`
-- Custom properties (like `jwt.*`) use their exact name in uppercase: `JWT_SECRET` → `jwt.secret`
+**Note**: Spring Boot uses relaxed binding for environment variables:
+- Property: `spring.datasource.username` → Environment Variable: `SPRING_DATASOURCE_USERNAME`
+- Property: `jwt.secret` → Environment Variable: `JWT_SECRET`
+- Rule: Convert property to uppercase and replace dots/hyphens with underscores
+- All underscores in property names are also represented as underscores in environment variables
 
 #### DDL Auto Options
 
