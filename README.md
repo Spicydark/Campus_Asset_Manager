@@ -297,7 +297,7 @@ spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 
 # JWT Configuration
-jwt.secret=${JWT_SECRET:CHANGE_ME_TO_A_SECURE_SECRET_KEY_MINIMUM_64_CHARACTERS}
+jwt.secret=${JWT_SECRET:CHANGE_ME_TO_A_SECURE_SECRET_KEY_MINIMUM_64_CHARACTERS_REQUIRED_FOR_HS512}
 jwt.expiration=3600000  # 1 hour in milliseconds
 ```
 
