@@ -1,0 +1,119 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f9fa;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.navbar {
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.card {
+  box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
+}
+
+.btn {
+  transition: all 0.2s;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(0,0,0,.035);
+}
+
+.badge {
+  font-size: 0.85rem;
+  padding: 0.35rem 0.65rem;
+}
+
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.login-card {
+  max-width: 450px;
+  width: 100%;
+}
+
+.dashboard-card {
+  border-left: 4px solid;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-card.primary {
+  border-left-color: #0d6efd;
+}
+
+.dashboard-card.success {
+  border-left-color: #198754;
+}
+
+.dashboard-card.warning {
+  border-left-color: #ffc107;
+}
+
+.dashboard-card.info {
+  border-left-color: #0dcaf0;
+}
+
+.status-badge-available {
+  background-color: #198754;
+}
+
+.status-badge-reserved {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.status-badge-maintenance {
+  background-color: #dc3545;
+}
+
+.status-badge-pending {
+  background-color: #6c757d;
+}
+
+.status-badge-approved {
+  background-color: #198754;
+}
+
+.status-badge-rejected {
+  background-color: #dc3545;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #6c757d;
+}
+
+.empty-state-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
