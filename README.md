@@ -289,7 +289,7 @@ spring.application.name=Campus_Asset_Manager
 # Database Configuration
 spring.datasource.url=${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/campus_asset_db}
 spring.datasource.username=${SPRING_DATASOURCE_USERNAME:root}
-spring.datasource.password=${SPRING_DATASOURCE_PASSWORD:}
+spring.datasource.password=${SPRING_DATASOURCE_PASSWORD:CHANGE_ME}
 
 # JPA/Hibernate Configuration
 spring.jpa.hibernate.ddl-auto=update
@@ -297,11 +297,11 @@ spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 
 # JWT Configuration
-jwt.secret=${JWT_SECRET}
+jwt.secret=${JWT_SECRET:CHANGE_ME_TO_A_SECURE_SECRET_KEY_MINIMUM_64_CHARACTERS}
 jwt.expiration=3600000  # 1 hour in milliseconds
 ```
 
-**Important**: Always set the `SPRING_DATASOURCE_PASSWORD` and `JWT_SECRET` environment variables. The password defaults to empty string for development convenience but should be configured in all environments.
+**Important**: The default values `CHANGE_ME` are placeholders only. You **must** set the `SPRING_DATASOURCE_PASSWORD` and `JWT_SECRET` environment variables to secure values before running in any environment.
 
 #### Configuration Options
 
